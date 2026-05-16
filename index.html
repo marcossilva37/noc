@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOC as a Service | Monitoramento Inteligente</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d14;
+    --card: #111827;
+    --border: #1f2937;
+    --accent: #3b82f6;
+    --accent2: #06b6d4;
+    --green: #10b981;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #1e3a5f 0%, #0a0d14 70%);
+    text-align:center; padding:60px 20px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .badge {
+    display:inline-block; padding:6px 16px; border-radius:999px;
+    border:1px solid var(--accent); color:var(--accent);
+    font-size:13px; font-weight:600; letter-spacing:1px;
+    margin-bottom:24px; text-transform:uppercase;
+  }
+  .hero h1 { font-size:clamp(2.5rem,6vw,5rem); font-weight:900; line-height:1.1; margin-bottom:16px; }
+  .hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .hero p { font-size:1.2rem; color:var(--muted); max-width:640px; line-height:1.7; margin-bottom:40px; }
+  .hero-stats { display:flex; gap:40px; flex-wrap:wrap; justify-content:center; margin-top:20px; }
+  .stat { text-align:center; }
+  .stat-num { font-size:2.5rem; font-weight:900; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat-label { font-size:0.85rem; color:var(--muted); margin-top:4px; }
+
+  /* SECTIONS */
+  section { padding:80px 20px; max-width:1100px; margin:0 auto; }
+  .section-title { font-size:2rem; font-weight:800; margin-bottom:8px; }
+  .section-sub { color:var(--muted); margin-bottom:48px; }
+  hr.divider { border:none; border-top:1px solid var(--border); margin:0; }
+
+  /* CARDS GRID */
+  .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+  .card {
+    background:var(--card); border:1px solid var(--border); border-radius:16px;
+    padding:28px; transition:border-color .3s, transform .3s;
+  }
+  .card:hover { border-color:var(--accent); transform:translateY(-4px); }
+  .card-icon { font-size:2rem; margin-bottom:16px; }
+  .card h3 { font-size:1.1rem; font-weight:700; margin-bottom:8px; }
+  .card p { color:var(--muted); font-size:0.9rem; line-height:1.6; }
+
+  /* HOW IT WORKS */
+  .flow { display:flex; gap:0; flex-wrap:wrap; justify-content:center; }
+  .flow-step {
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:24px 20px; text-align:center; flex:1; min-width:180px; max-width:220px;
+    position:relative;
+  }
+  .flow-step + .flow-step::before {
+    content:'→'; position:absolute; left:-20px; top:50%; transform:translateY(-50%);
+    color:var(--accent); font-size:1.5rem;
+  }
+  .flow-step .num {
+    width:40px; height:40px; border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900; margin:0 auto 12px;
+  }
+  .flow-step h4 { font-size:0.95rem; font-weight:700; margin-bottom:6px; }
+  .flow-step p { font-size:0.82rem; color:var(--muted); }
+
+  /* METRICS */
+  .metrics-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+  .metric-card {
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:24px; text-align:center;
+  }
+  .metric-num { font-size:2.2rem; font-weight:900; }
+  .metric-num.blue { color:var(--accent); }
+  .metric-num.green { color:var(--green); }
+  .metric-num.cyan { color:var(--accent2); }
+  .metric-num.yellow { color:var(--yellow); }
+  .metric-label { font-size:0.85rem; color:var(--muted); margin-top:6px; }
+
+  /* CLIENTS */
+  .clients { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; }
+  .client-card {
+    background:#fff; border:1px solid #e5e7eb; border-radius:16px;
+    padding:24px 36px; display:flex; align-items:center; justify-content:center;
+    transition: transform .3s, box-shadow .3s;
+    min-width:220px;
+  }
+  .client-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(59,130,246,0.15); }
+  .client-card img { height:64px; width:auto; max-width:260px; object-fit:contain; display:block; }
+
+  /* EXPERIENCES */
+  .exp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+  .exp-card {
+    background:var(--card); border:1px solid var(--border); border-radius:16px;
+    overflow:hidden; transition:transform .3s, border-color .3s;
+  }
+  .exp-card:hover { transform:translateY(-4px); border-color:var(--accent); }
+  .exp-card img { width:100%; height:220px; object-fit:cover; object-position:top; display:block; }
+  .exp-card-body { padding:16px; }
+  .exp-card-body h4 { font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--text); }
+  .exp-card-body p { font-size:0.82rem; color:var(--muted); line-height:1.5; }
+  .exp-tag { display:inline-block; padding:3px 10px; border-radius:999px; font-size:0.72rem; font-weight:700; margin-bottom:8px; }
+  .exp-tag.dasa { background:#1e3a5f; color:var(--accent2); }
+  .exp-tag.bot { background:#064e3b; color:#6ee7b7; }
+
+  /* WHATSAPP */
+  .wa-demo {
+    background:#111; border-radius:16px; padding:24px; max-width:420px;
+    border:1px solid #1f2937; font-size:0.875rem;
+  }
+  .wa-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+  .wa-avatar { width:44px; height:44px; border-radius:50%; background:linear-gradient(135deg,#25d366,#128c7e); display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+  .wa-name { font-weight:700; }
+  .wa-status { font-size:0.75rem; color:var(--green); }
+  .wa-msg {
+    background:#1a2332; border-radius:0 12px 12px 12px;
+    padding:12px 14px; margin-bottom:10px; border-left:3px solid;
+  }
+  .wa-msg.disaster { border-color:var(--red); }
+  .wa-msg.high { border-color:var(--yellow); }
+  .wa-msg.ok { border-color:var(--green); }
+  .wa-tag { font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:4px; }
+  .wa-tag.disaster { color:var(--red); }
+  .wa-tag.high { color:var(--yellow); }
+  .wa-tag.ok { color:var(--green); }
+  .wa-time { font-size:0.7rem; color:var(--muted); margin-top:6px; text-align:right; }
+
+  /* PLANS */
+  .plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+  .plan {
+    background:var(--card); border:1px solid var(--border); border-radius:16px;
+    padding:32px; position:relative;
+  }
+  .plan.featured { border-color:var(--accent); }
+  .plan-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-size:0.75rem; font-weight:700; padding:4px 14px; border-radius:999px; }
+  .plan-name { font-size:1.1rem; font-weight:700; margin-bottom:4px; }
+  .plan-price { font-size:2rem; font-weight:900; color:var(--accent); margin:12px 0; }
+  .plan-price span { font-size:1rem; color:var(--muted); font-weight:400; }
+  .plan ul { list-style:none; margin-top:16px; }
+  .plan ul li { padding:6px 0; font-size:0.9rem; color:var(--muted); display:flex; gap:8px; align-items:flex-start; }
+  .plan ul li::before { content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; }
+
+  /* CTA */
+  .cta-section {
+    text-align:center; padding:80px 20px;
+    background: radial-gradient(ellipse 70% 60% at 50% 100%, #1e3a5f 0%, #0a0d14 70%);
+  }
+  .cta-section h2 { font-size:2.5rem; font-weight:900; margin-bottom:16px; }
+  .cta-section p { color:var(--muted); margin-bottom:32px; font-size:1.1rem; }
+  .btn {
+    display:inline-block; padding:14px 36px; border-radius:999px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    color:#fff; font-weight:700; font-size:1rem; text-decoration:none;
+    transition:opacity .2s, transform .2s;
+  }
+  .btn:hover { opacity:0.85; transform:scale(1.03); }
+  .btn-wa {
+    display:inline-block; padding:14px 36px; border-radius:999px;
+    background:#25d366; color:#fff; font-weight:700; font-size:1rem;
+    text-decoration:none; margin-left:16px;
+    transition:opacity .2s, transform .2s;
+  }
+  .btn-wa:hover { opacity:0.85; transform:scale(1.03); }
+
+  /* FOOTER */
+  footer { text-align:center; padding:32px 20px; color:var(--muted); font-size:0.85rem; border-top:1px solid var(--border); }
+
+  /* ALERT PILLS */
+  .pill { display:inline-block; padding:3px 10px; border-radius:999px; font-size:0.75rem; font-weight:700; }
+  .pill.disaster { background:#7f1d1d; color:#fca5a5; }
+  .pill.high { background:#78350f; color:#fde68a; }
+  .pill.ok { background:#064e3b; color:#6ee7b7; }
+
+  /* DASHBOARD */
+  .dash-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media(max-width:700px){ .dash-grid { grid-template-columns:1fr; } }
+  .dash-panel { background:#0d1117; border:1px solid #1f2937; border-radius:14px; padding:20px; }
+  .dash-title { font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:14px; }
+  .avail-big { display:flex; gap:12px; }
+  .avail-box { flex:1; border-radius:10px; padding:18px 12px; text-align:center; }
+  .avail-box.green { background:#052e16; border:1px solid #166534; }
+  .avail-box.purple { background:#2e1065; border:1px solid #6d28d9; }
+  .avail-box .avail-label { font-size:0.72rem; color:var(--muted); margin-bottom:8px; }
+  .avail-box .avail-val { font-size:2rem; font-weight:900; }
+  .avail-box.green .avail-val { color:#4ade80; }
+  .avail-box.purple .avail-val { color:#a78bfa; }
+  .host-row { display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid #1a2332; font-size:0.82rem; }
+  .host-row:last-child { border-bottom:none; }
+  .host-name { color:var(--accent2); }
+  .bar-wrap { flex:1; margin:0 12px; height:6px; background:#1f2937; border-radius:999px; overflow:hidden; }
+  .bar-fill { height:100%; border-radius:999px; background:var(--green); }
+  .bar-fill.warn { background:var(--yellow); }
+  .bar-fill.ok { background:var(--green); }
+  .pct { font-size:0.8rem; color:var(--green); font-weight:700; min-width:36px; text-align:right; }
+  .pct.warn { color:var(--yellow); }
+  .net-row { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #1a2332; font-size:0.82rem; }
+  .net-row:last-child { border-bottom:none; }
+  .net-status { display:flex; align-items:center; gap:6px; }
+  .net-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .net-dot.green { background:var(--green); }
+  .net-dot.yellow { background:var(--yellow); }
+  .net-dot.red { background:var(--red); }
+  .net-val { font-weight:700; color:var(--text); }
+  .sess-num { font-size:2.8rem; font-weight:900; color:var(--accent); line-height:1; }
+  .sess-label { font-size:0.75rem; color:var(--muted); margin-top:4px; }
+  .alert-row { display:flex; gap:8px; align-items:flex-start; padding:8px 0; border-bottom:1px solid #1a2332; font-size:0.8rem; }
+  .alert-row:last-child { border-bottom:none; }
+  .sev-badge { font-size:0.65rem; font-weight:700; padding:2px 7px; border-radius:4px; flex-shrink:0; margin-top:1px; }
+  .sev-badge.disaster { background:#7f1d1d; color:#fca5a5; }
+  .sev-badge.high { background:#78350f; color:#fde68a; }
+  .sev-badge.warn { background:#1c1917; color:#a8a29e; }
+  .alert-host { color:var(--accent2); font-weight:600; }
+  .alert-msg { color:var(--muted); margin-top:2px; }
+  .spark { height:40px; display:flex; align-items:flex-end; gap:3px; margin-top:12px; }
+  .spark-bar { flex:1; border-radius:3px 3px 0 0; background:var(--accent); opacity:0.7; transition:opacity .2s; }
+  .spark-bar:hover { opacity:1; }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity:0; transform:translateY(30px); transition:opacity .6s, transform .6s; }
+  .reveal.visible { opacity:1; transform:none; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🟢 NOC as a Service</div>
+  <h1>Monitoramento <span>Inteligente</span><br>24/7 com Automação</h1>
+  <p>Serviço gerenciado de monitoramento ativo — alertas em tempo real, dashboards analíticos e resposta automatizada para a infraestrutura da sua empresa.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">6.595</div>
+      <div class="stat-label">Hosts Monitorados</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">643K+</div>
+      <div class="stat-label">Itens de Monitoramento</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">189K+</div>
+      <div class="stat-label">Triggers Ativas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Alertas Automáticos</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- O QUE É -->
+<section class="reveal">
+  <div class="section-title">O que é o Serviço?</div>
+  <div class="section-sub">Um NOC completo terceirizado, entregue como serviço gerenciado</div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🖥️</div>
+      <h3>Motor de Monitoramento Ativo</h3>
+      <p>Coleta de métricas de servidores, bancos de dados, firewalls, links de internet, storages e aplicações. Alertas inteligentes com severidade configurável.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Dashboards Analíticos</h3>
+      <p>Painéis visuais em tempo real para bancos de dados, redes e serviços críticos. Visibilidade total da saúde da infraestrutura em um único lugar.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h3>Notificações Instantâneas</h3>
+      <p>Bot integrado envia alertas imediatos ao time técnico via mensageria. Suporte a grupos, agendamento e interação sob demanda a qualquer momento.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔥</div>
+      <h3>Monitoramento de Rede</h3>
+      <p>Sessões ativas, VPN, links de internet (upload/download/perda), latência e firewall com alertas automáticos de degradação.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗄️</div>
+      <h3>Banco de Dados</h3>
+      <p>Sessões ativas, tablespace, locks, performance de I/O e disponibilidade de instâncias críticas de missão hospitalares.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚙️</div>
+      <h3>Automação e Relatórios</h3>
+      <p>Relatórios gerados automaticamente e enviados ao time. Agendamento flexível e integração com fluxos existentes do cliente.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMO FUNCIONA -->
+<section class="reveal">
+  <div class="section-title">Como Funciona</div>
+  <div class="section-sub">Da coleta do dado ao alerta no bolso do gestor — em segundos</div>
+  <div class="flow" style="gap:20px">
+    <div class="flow-step">
+      <div class="num">1</div>
+      <h4>Coleta</h4>
+      <p>Agentes de monitoramento coletam métricas da infra em tempo real</p>
+    </div>
+    <div class="flow-step">
+      <div class="num">2</div>
+      <h4>Análise</h4>
+      <p>Regras inteligentes avaliam thresholds e disparam eventos</p>
+    </div>
+    <div class="flow-step">
+      <div class="num">3</div>
+      <h4>Visualização</h4>
+      <p>Dashboards analíticos exibem o estado em tempo real</p>
+    </div>
+    <div class="flow-step">
+      <div class="num">4</div>
+      <h4>Alerta</h4>
+      <p>Bot de notificações comunica o time com severidade e detalhes</p>
+    </div>
+    <div class="flow-step">
+      <div class="num">5</div>
+      <h4>Resolução</h4>
+      <p>Confirmação automática de recovery enviada ao grupo</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- NUMEROS REAIS -->
+<section class="reveal">
+  <div class="section-title">Números Reais da Plataforma</div>
+  <div class="section-sub">Dados consolidados dos ambientes em produção gerenciados pelo serviço</div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-num blue">6.595</div>
+      <div class="metric-label">Hosts Ativos</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num cyan">926</div>
+      <div class="metric-label">Templates Configurados</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num green">643K+</div>
+      <div class="metric-label">Itens Monitorados</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num yellow">189K+</div>
+      <div class="metric-label">Triggers Ativas</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num blue">3.384/s</div>
+      <div class="metric-label">Valores por Segundo</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-num cyan">97</div>
+      <div class="metric-label">Usuários na Plataforma</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHATSAPP DEMO -->
+<section class="reveal">
+  <div class="section-title">Alertas em Tempo Real</div>
+  <div class="section-sub">Notificações automáticas com severidade, host, incidente e horário</div>
+  <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:flex-start;">
+    <div class="wa-demo">
+      <div class="wa-header">
+        <div class="wa-avatar">🔔</div>
+        <div>
+          <div class="wa-name">NOC Alertas</div>
+          <div class="wa-status">● Online • Grupo de Alertas NOC</div>
+        </div>
+      </div>
+      <div class="wa-msg disaster">
+        <div class="wa-tag disaster">🔴 DISASTER</div>
+        <strong>SS-URA-SW04</strong><br>
+        Incidente: SS-URA-SW04 perdeu comunicação via ping<br>
+        Severidade: Disaster<br>
+        Tempo de incidente: 4h 29m 0s
+        <div class="wa-time">2026.05.12 04:13</div>
+      </div>
+      <div class="wa-msg high">
+        <div class="wa-tag high">🟡 HIGH</div>
+        <strong>hsdora188</strong><br>
+        Incidente: Database dbprod1 com 6 sessão(s) com objeto(s) em lock<br>
+        Severidade: High<br>
+        Tempo de incidente: 55m 1s
+        <div class="wa-time">2026.05.12 02:08</div>
+      </div>
+      <div class="wa-msg ok">
+        <div class="wa-tag ok">✅ RECOVERY</div>
+        <strong>FW01HSD</strong><br>
+        Incidente resolvido: FortiGate Unavailable by ICMP ping<br>
+        Severidade: Resolvido
+        <div class="wa-time">2026.05.12 04:30</div>
+      </div>
+    </div>
+    <div style="flex:1; min-width:260px;">
+      <h3 style="font-size:1.3rem; margin-bottom:20px;">Funcionalidades do Bot de Notificações</h3>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card" style="padding:16px;">
+          <strong>📅 Alertas Agendados</strong>
+          <p style="margin-top:6px;">Configure horários específicos para receber resumos do ambiente — manhã, tarde e noite.</p>
+        </div>
+        <div class="card" style="padding:16px;">
+          <strong>💬 Interação sob Demanda</strong>
+          <p style="margin-top:6px;">Consulte o status da infra a qualquer momento enviando uma mensagem ao bot.</p>
+        </div>
+        <div class="card" style="padding:16px;">
+          <strong>👥 Grupos por Equipe</strong>
+          <p style="margin-top:6px;">Notificações segmentadas por área: banco de dados, redes, servidores, aplicações.</p>
+        </div>
+        <div class="card" style="padding:16px;">
+          <strong>📈 Relatórios Automáticos</strong>
+          <p style="margin-top:6px;">Relatórios visuais gerados e enviados automaticamente ao time técnico e gestores.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DASHBOARD -->
+<section class="reveal" style="max-width:1100px; margin:0 auto; padding:80px 20px;">
+  <div class="section-title">Dashboard em Tempo Real</div>
+  <div class="section-sub">Visibilidade completa da infraestrutura — disponibilidade, rede, sessões e alertas ativos</div>
+  <div class="dash-grid">
+
+    <!-- Disponibilidade -->
+    <div class="dash-panel">
+      <div class="dash-title">📡 Disponibilidade Geral — Últimas 6 horas</div>
+      <div class="avail-big">
+        <div class="avail-box green">
+          <div class="avail-label">Média Disponível %</div>
+          <div class="avail-val">99.6</div>
+        </div>
+        <div class="avail-box purple">
+          <div class="avail-label">Indisponível %</div>
+          <div class="avail-val">0.382</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <div class="host-row"><span class="host-name">Servidores</span><div class="bar-wrap"><div class="bar-fill ok" style="width:99.7%"></div></div><span class="pct">99.7</span></div>
+        <div class="host-row"><span class="host-name">Rede Wi-Fi</span><div class="bar-wrap"><div class="bar-fill ok" style="width:99.6%"></div></div><span class="pct">99.6</span></div>
+        <div class="host-row"><span class="host-name">Rede Cabeada</span><div class="bar-wrap"><div class="bar-fill warn" style="width:99%"></div></div><span class="pct warn">99.0</span></div>
+        <div class="host-row"><span class="host-name">Links Internet</span><div class="bar-wrap"><div class="bar-fill ok" style="width:100%"></div></div><span class="pct">100</span></div>
+      </div>
+    </div>
+
+    <!-- Status de Rede -->
+    <div class="dash-panel">
+      <div class="dash-title">🌐 Status de Links — Tempo Real</div>
+      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>ELO INTERNET</span><span class="net-val">✅ Online</span></div>
+      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>WIKI INTERNET</span><span class="net-val">✅ Online</span></div>
+      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>WAN SEC 1GR</span><span class="net-val">✅ Online</span></div>
+      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>EMBRATEL</span><span class="net-val">✅ Online</span></div>
+      <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; text-align:center;">
+        <div style="background:#0d1f12; border-radius:8px; padding:10px;">
+          <div style="font-size:1.3rem; font-weight:900; color:var(--green);">36.6ms</div>
+          <div style="font-size:0.7rem; color:var(--muted);">WIKI</div>
+        </div>
+        <div style="background:#0d1f12; border-radius:8px; padding:10px;">
+          <div style="font-size:1.3rem; font-weight:900; color:var(--green);">38.8ms</div>
+          <div style="font-size:0.7rem; color:var(--muted);">SECTRUM</div>
+        </div>
+        <div style="background:#0d1f12; border-radius:8px; padding:10px;">
+          <div style="font-size:1.3rem; font-weight:900; color:var(--accent);">61.7ms</div>
+          <div style="font-size:0.7rem; color:var(--muted);">EMBRATEL</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sessões Ativas -->
+    <div class="dash-panel">
+      <div class="dash-title">🖥️ Sessões Ativas — Firewall</div>
+      <div style="display:flex; gap:20px; align-items:center;">
+        <div>
+          <div class="sess-num">129.079</div>
+          <div class="sess-label">Sessões ativas FortiGate</div>
+        </div>
+        <div style="flex:1;">
+          <div class="spark" id="spark1"></div>
+        </div>
+      </div>
+      <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; text-align:center;">
+        <div style="background:#0f172a; border-radius:8px; padding:10px;">
+          <div style="font-size:1.1rem; font-weight:900; color:var(--accent);">3%</div>
+          <div style="font-size:0.7rem; color:var(--muted);">CPU Matriz</div>
+        </div>
+        <div style="background:#0f172a; border-radius:8px; padding:10px;">
+          <div style="font-size:1.1rem; font-weight:900; color:var(--green);">10</div>
+          <div style="font-size:0.7rem; color:var(--muted);">Usuários VPN</div>
+        </div>
+        <div style="background:#0f172a; border-radius:8px; padding:10px;">
+          <div style="font-size:1.1rem; font-weight:900; color:var(--yellow);">6</div>
+          <div style="font-size:0.7rem; color:var(--muted);">Alertas Ativos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feed de Alertas -->
+    <div class="dash-panel">
+      <div class="dash-title">🚨 Alertas Recentes</div>
+      <div class="alert-row">
+        <span class="sev-badge disaster">DISASTER</span>
+        <div><div class="alert-host">SS-URA-SW04</div><div class="alert-msg">Perdeu comunicação via ping &mdash; 4h 29m</div></div>
+      </div>
+      <div class="alert-row">
+        <span class="sev-badge disaster">DISASTER</span>
+        <div><div class="alert-host">DC-URA-SW01</div><div class="alert-msg">Perdeu comunicação via ping &mdash; 4h 29m</div></div>
+      </div>
+      <div class="alert-row">
+        <span class="sev-badge high">HIGH</span>
+        <div><div class="alert-host">hsdora188</div><div class="alert-msg">Database dbprod1 com sessões em lock &mdash; 55m</div></div>
+      </div>
+      <div class="alert-row">
+        <span class="sev-badge high">HIGH</span>
+        <div><div class="alert-host">FW01HSD</div><div class="alert-msg">FortiGate: Unavailable by ICMP ping &mdash; 4h</div></div>
+      </div>
+      <div class="alert-row">
+        <span class="sev-badge warn">WARNING</span>
+        <div><div class="alert-host">homolog208</div><div class="alert-msg">Disk read/write responses too high</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CLIENTES -->
+<section class="reveal" style="text-align:center;">
+  <div class="section-title">Empresas que Confiam no Serviço</div>
+  <div class="section-sub">Ambientes críticos de saúde e diagnósticos monitorados 24/7</div>
+  <div class="clients">
+    <div class="client-card">
+      <img src="logo_hsd_original.png" alt="Hospital São Domingos">
+    </div>
+    <div class="client-card">
+      <img src="logo_dasa.png" alt="DASA">
+    </div>
+    <div class="client-card">
+      <img src="logo_rede_americas.svg" alt="Rede Américas">
+    </div>
+  </div>
+  <p style="color:var(--muted); margin-top:32px; font-size:0.9rem;">Infraestruturas hospitalares exigem disponibilidade máxima.<br>Nosso NOC garante que qualquer falha seja detectada e comunicada em segundos.</p>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCIAS -->
+<section class="reveal">
+  <div class="section-title">Experiências de Outras Empresas</div>
+  <div class="section-sub">Resultados reais do bot de alertas e dashboards em ambientes de grande escala</div>
+  <div class="exp-grid">
+
+    <div class="exp-card">
+      <img src="img/exp1.png" alt="Bot DASA – Health Check Oracle">
+      <div class="exp-card-body">
+        <span class="exp-tag dasa">DASA</span>
+        <h4>Bot de Health Check – Oracle & PACS</h4>
+        <p>Time solicita dashboard via bot e recebe instantaneamente o painel de alertas do ambiente Oracle, incluindo uso de cursores abertos e status de PACS.</p>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <img src="img/exp2.png" alt="Bot DASA – Painel Health Check">
+      <div class="exp-card-body">
+        <span class="exp-tag dasa">DASA</span>
+        <h4>Painel Health Check — 30+ Ambientes</h4>
+        <p>Menu interativo com mais de 30 ambientes monitorados: TASY, DataGuard, VMware, Oracle, PACS, AD, Links, Firewall e muito mais, tudo via bot.</p>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <img src="img/exp3.png" alt="Bot Rede Américas – Switch Dashboard">
+      <div class="exp-card-body">
+        <span class="exp-tag bot">Rede Américas</span>
+        <h4>Dashboard de Switch em Tempo Real</h4>
+        <p>Dashboard gerado sob demanda mostrando Top 10 hosts com maior latência, alertas de conectividade e status de todos os switches da rede.</p>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <img src="img/exp4_new.png" alt="Bot DASA – MVH9J Dashboard">
+      <div class="exp-card-body">
+        <span class="exp-tag dasa">DASA</span>
+        <h4>Dashboards Visuais por Unidade</h4>
+        <p>Painéis coloridos com visão consolidada de todos os servidores e serviços críticos por unidade hospitalar, enviados automaticamente pelo bot.</p>
+      </div>
+    </div>
+
+  </div>
+  <p style="color:var(--muted); margin-top:32px; font-size:0.9rem; text-align:center;">
+    💬 <em>"cara está muito TOP viu...Parabéns 👏👏👏"</em> — Igor Morales - Gerente de Ti - Rede Américas
+  </p>
+</section>
+
+<hr class="divider">
+
+<!-- PLANOS -->
+<section class="reveal">
+  <div class="section-title">Planos de Serviço</div>
+  <div class="section-sub">Escolha o nível de cobertura ideal para sua infraestrutura</div>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">Essencial</div>
+      <div style="color:var(--muted); font-size:0.85rem;">Até 50 hosts</div>
+      <div class="plan-price">Sob<span> consulta</span></div>
+      <ul>
+        <li>Monitoramento ativo de infraestrutura</li>
+        <li>Dashboard analítico básico</li>
+        <li>Notificações instantâneas via bot</li>
+        <li>Suporte em horário comercial</li>
+        <li>Relatório mensal</li>
+      </ul>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">Mais Popular</div>
+      <div class="plan-name">Profissional</div>
+      <div style="color:var(--muted); font-size:0.85rem;">Até 300 hosts</div>
+      <div class="plan-price">Sob<span> consulta</span></div>
+      <ul>
+        <li>Plataforma de monitoramento completa</li>
+        <li>Dashboards analíticos personalizados</li>
+        <li>Bot de notificações com grupos</li>
+        <li>Alertas agendados e sob demanda</li>
+        <li>Relatórios automáticos</li>
+        <li>Monitoramento de BD e firewall</li>
+        <li>Suporte 8x5</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <div class="plan-name">Enterprise</div>
+      <div style="color:var(--muted); font-size:0.85rem;">Hosts ilimitados</div>
+      <div class="plan-price">Sob<span> consulta</span></div>
+      <ul>
+        <li>Tudo do Profissional</li>
+        <li>Suporte 24x7</li>
+        <li>SLA garantido em contrato</li>
+        <li>Integrações customizadas</li>
+        <li>ITSM / Chamados automáticos</li>
+        <li>Reuniões de review mensais</li>
+        <li>Ambiente dedicado</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+  <h2>Pronto para ter visibilidade <span style="color:var(--accent);">total</span>?</h2>
+  <p>Entre em contato e receba uma proposta personalizada para a sua infraestrutura.</p>
+  <a href="mailto:marcossilva03@hotmail.com" class="btn">📧 Solicitar Orçamento</a>
+  <a href="https://wa.me/5598999086074" class="btn-wa">💬 WhatsApp</a>
+</div>
+
+<footer>
+  <p>NOC as a Service · Monitoramento Ativo 24/7 · Dashboards Analíticos · Notificações Inteligentes</p>
+  <p style="margin-top:8px;">© 2026 · Todos os direitos reservados</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Sparkline
+  const spark = document.getElementById('spark1');
+  if(spark) {
+    const vals = [72,85,91,78,88,95,82,129,110,98,115,120,129];
+    const max = Math.max(...vals);
+    vals.forEach(v => {
+      const b = document.createElement('div');
+      b.className = 'spark-bar';
+      b.style.height = (v/max*100)+'%';
+      spark.appendChild(b);
+    });
+  }
+</script>
+</body>
+</html>
