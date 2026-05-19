@@ -66,7 +66,7 @@
   .tool-card p { color:var(--muted); font-size:0.9rem; line-height:1.6; margin-bottom:16px; }
   .tool-feat { list-style:none; }
   .tool-feat li { padding:5px 0; font-size:0.85rem; color:var(--muted); display:flex; gap:8px; align-items:flex-start; }
-  .tool-feat li::before { content:'â—†'; color:var(--soc); font-size:0.6rem; margin-top:3px; flex-shrink:0; }
+  .tool-feat li::before { content:'◆'; color:var(--soc); font-size:0.6rem; margin-top:3px; flex-shrink:0; }
 
   /* FRAMEWORK CARDS */
   .fw-card {
@@ -79,7 +79,7 @@
   .fw-card p { color:var(--muted); font-size:0.875rem; line-height:1.6; }
   .fw-card ul { list-style:none; margin-top:12px; }
   .fw-card ul li { padding:4px 0; font-size:0.82rem; color:var(--muted); display:flex; gap:8px; }
-  .fw-card ul li::before { content:'â€º'; color:var(--soc2); font-weight:700; }
+  .fw-card ul li::before { content:'›'; color:var(--soc2); font-weight:700; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
 
@@ -134,7 +134,7 @@
     position:relative;
   }
   .flow-step + .flow-step::before {
-    content:'â†’'; position:absolute; left:-20px; top:50%; transform:translateY(-50%);
+    content:'→'; position:absolute; left:-20px; top:50%; transform:translateY(-50%);
     color:var(--accent); font-size:1.5rem;
   }
   .flow-step .num {
@@ -220,7 +220,7 @@
   .plan-price span { font-size:1rem; color:var(--muted); font-weight:400; }
   .plan ul { list-style:none; margin-top:16px; }
   .plan ul li { padding:6px 0; font-size:0.9rem; color:var(--muted); display:flex; gap:8px; align-items:flex-start; }
-  .plan ul li::before { content:'âœ“'; color:var(--green); font-weight:700; flex-shrink:0; }
+  .plan ul li::before { content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; }
 
   /* CTA */
   .cta-section {
@@ -306,8 +306,8 @@
 
 <!-- TAB NAVIGATION -->
 <nav class="tab-nav" id="mainNav">
-  <button class="tab-btn active" id="btn-noc" onclick="switchTab('noc')">ðŸ–¥ï¸ NOC as a Service</button>
-  <button class="tab-btn soc-tab" id="btn-soc" onclick="switchTab('soc')">ðŸ›¡ï¸ SOC / MSS</button>
+  <button class="tab-btn active" id="btn-noc" onclick="switchTab('noc')">🖥️ NOC as a Service</button>
+  <button class="tab-btn soc-tab" id="btn-soc" onclick="switchTab('soc')">🛡️ SOC / MSS</button>
 </nav>
 
 <!-- NOC PAGE -->
@@ -315,9 +315,9 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="badge">ðŸŸ¢ NOC as a Service</div>
-  <h1>Monitoramento <span>Inteligente</span><br>24/7 com AutomaÃ§Ã£o</h1>
-  <p>ServiÃ§o gerenciado de monitoramento ativo â€” alertas em tempo real, dashboards analÃ­ticos e resposta automatizada para a infraestrutura da sua empresa.</p>
+  <div class="badge">🟢 NOC as a Service</div>
+  <h1>Monitoramento <span>Inteligente</span><br>24/7 com Automação</h1>
+  <p>Serviço gerenciado de monitoramento ativo — alertas em tempo real, dashboards analíticos e resposta automatizada para a infraestrutura da sua empresa.</p>
   <div class="hero-stats">
     <div class="stat">
       <div class="stat-num">6.595</div>
@@ -333,47 +333,47 @@
     </div>
     <div class="stat">
       <div class="stat-num">24/7</div>
-      <div class="stat-label">Alertas AutomÃ¡ticos</div>
+      <div class="stat-label">Alertas Automáticos</div>
     </div>
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- O QUE Ã‰ -->
+<!-- O QUE É -->
 <section class="reveal">
-  <div class="section-title">O que Ã© o ServiÃ§o?</div>
-  <div class="section-sub">Um NOC completo terceirizado, entregue como serviÃ§o gerenciado</div>
+  <div class="section-title">O que é o Serviço?</div>
+  <div class="section-sub">Um NOC completo terceirizado, entregue como serviço gerenciado</div>
   <div class="grid-3">
     <div class="card">
-      <div class="card-icon">ðŸ–¥ï¸</div>
+      <div class="card-icon">🖥️</div>
       <h3>Motor de Monitoramento Ativo</h3>
-      <p>Coleta de mÃ©tricas de servidores, bancos de dados, firewalls, links de internet, storages e aplicaÃ§Ãµes. Alertas inteligentes com severidade configurÃ¡vel.</p>
+      <p>Coleta de métricas de servidores, bancos de dados, firewalls, links de internet, storages e aplicações. Alertas inteligentes com severidade configurável.</p>
     </div>
     <div class="card">
-      <div class="card-icon">ðŸ“Š</div>
-      <h3>Dashboards AnalÃ­ticos</h3>
-      <p>PainÃ©is visuais em tempo real para bancos de dados, redes e serviÃ§os crÃ­ticos. Visibilidade total da saÃºde da infraestrutura em um Ãºnico lugar.</p>
+      <div class="card-icon">📊</div>
+      <h3>Dashboards Analíticos</h3>
+      <p>Painéis visuais em tempo real para bancos de dados, redes e serviços críticos. Visibilidade total da saúde da infraestrutura em um único lugar.</p>
     </div>
     <div class="card">
-      <div class="card-icon">ðŸ“±</div>
-      <h3>NotificaÃ§Ãµes InstantÃ¢neas</h3>
-      <p>Bot integrado envia alertas imediatos ao time tÃ©cnico via mensageria. Suporte a grupos, agendamento e interaÃ§Ã£o sob demanda a qualquer momento.</p>
+      <div class="card-icon">📱</div>
+      <h3>Notificações Instantâneas</h3>
+      <p>Bot integrado envia alertas imediatos ao time técnico via mensageria. Suporte a grupos, agendamento e interação sob demanda a qualquer momento.</p>
     </div>
     <div class="card">
-      <div class="card-icon">ðŸ”¥</div>
+      <div class="card-icon">🔥</div>
       <h3>Monitoramento de Rede</h3>
-      <p>SessÃµes ativas, VPN, links de internet (upload/download/perda), latÃªncia e firewall com alertas automÃ¡ticos de degradaÃ§Ã£o.</p>
+      <p>Sessões ativas, VPN, links de internet (upload/download/perda), latência e firewall com alertas automáticos de degradação.</p>
     </div>
     <div class="card">
-      <div class="card-icon">ðŸ—„ï¸</div>
+      <div class="card-icon">🗄️</div>
       <h3>Banco de Dados</h3>
-      <p>SessÃµes ativas, tablespace, locks, performance de I/O e disponibilidade de instÃ¢ncias crÃ­ticas de missÃ£o hospitalares.</p>
+      <p>Sessões ativas, tablespace, locks, performance de I/O e disponibilidade de instâncias críticas de missão hospitalares.</p>
     </div>
     <div class="card">
-      <div class="card-icon">âš™ï¸</div>
-      <h3>AutomaÃ§Ã£o e RelatÃ³rios</h3>
-      <p>RelatÃ³rios gerados automaticamente e enviados ao time. Agendamento flexÃ­vel e integraÃ§Ã£o com fluxos existentes do cliente.</p>
+      <div class="card-icon">⚙️</div>
+      <h3>Automação e Relatórios</h3>
+      <p>Relatórios gerados automaticamente e enviados ao time. Agendamento flexível e integração com fluxos existentes do cliente.</p>
     </div>
   </div>
 </section>
@@ -383,32 +383,32 @@
 <!-- COMO FUNCIONA -->
 <section class="reveal">
   <div class="section-title">Como Funciona</div>
-  <div class="section-sub">Da coleta do dado ao alerta no bolso do gestor â€” em segundos</div>
+  <div class="section-sub">Da coleta do dado ao alerta no bolso do gestor — em segundos</div>
   <div class="flow" style="gap:20px">
     <div class="flow-step">
       <div class="num">1</div>
       <h4>Coleta</h4>
-      <p>Agentes de monitoramento coletam mÃ©tricas da infra em tempo real</p>
+      <p>Agentes de monitoramento coletam métricas da infra em tempo real</p>
     </div>
     <div class="flow-step">
       <div class="num">2</div>
-      <h4>AnÃ¡lise</h4>
+      <h4>Análise</h4>
       <p>Regras inteligentes avaliam thresholds e disparam eventos</p>
     </div>
     <div class="flow-step">
       <div class="num">3</div>
-      <h4>VisualizaÃ§Ã£o</h4>
-      <p>Dashboards analÃ­ticos exibem o estado em tempo real</p>
+      <h4>Visualização</h4>
+      <p>Dashboards analíticos exibem o estado em tempo real</p>
     </div>
     <div class="flow-step">
       <div class="num">4</div>
       <h4>Alerta</h4>
-      <p>Bot de notificaÃ§Ãµes comunica o time com severidade e detalhes</p>
+      <p>Bot de notificações comunica o time com severidade e detalhes</p>
     </div>
     <div class="flow-step">
       <div class="num">5</div>
-      <h4>ResoluÃ§Ã£o</h4>
-      <p>ConfirmaÃ§Ã£o automÃ¡tica de recovery enviada ao grupo</p>
+      <h4>Resolução</h4>
+      <p>Confirmação automática de recovery enviada ao grupo</p>
     </div>
   </div>
 </section>
@@ -417,8 +417,8 @@
 
 <!-- NUMEROS REAIS -->
 <section class="reveal">
-  <div class="section-title">NÃºmeros Reais da Plataforma</div>
-  <div class="section-sub">Dados consolidados dos ambientes em produÃ§Ã£o gerenciados pelo serviÃ§o</div>
+  <div class="section-title">Números Reais da Plataforma</div>
+  <div class="section-sub">Dados consolidados dos ambientes em produção gerenciados pelo serviço</div>
   <div class="metrics-grid">
     <div class="metric-card">
       <div class="metric-num blue">6.595</div>
@@ -442,7 +442,7 @@
     </div>
     <div class="metric-card">
       <div class="metric-num cyan">97</div>
-      <div class="metric-label">UsuÃ¡rios na Plataforma</div>
+      <div class="metric-label">Usuários na Plataforma</div>
     </div>
   </div>
 </section>
@@ -452,34 +452,34 @@
 <!-- WHATSAPP DEMO -->
 <section class="reveal">
   <div class="section-title">Alertas em Tempo Real</div>
-  <div class="section-sub">NotificaÃ§Ãµes automÃ¡ticas com severidade, host, incidente e horÃ¡rio</div>
+  <div class="section-sub">Notificações automáticas com severidade, host, incidente e horário</div>
   <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:flex-start;">
     <div class="wa-demo">
       <div class="wa-header">
-        <div class="wa-avatar">ðŸ””</div>
+        <div class="wa-avatar">🔔</div>
         <div>
           <div class="wa-name">NOC Alertas</div>
-          <div class="wa-status">â— Online â€¢ Grupo de Alertas NOC</div>
+          <div class="wa-status">● Online • Grupo de Alertas NOC</div>
         </div>
       </div>
       <div class="wa-msg disaster">
-        <div class="wa-tag disaster">ðŸ”´ DISASTER</div>
+        <div class="wa-tag disaster">🔴 DISASTER</div>
         <strong>SS-URA-SW04</strong><br>
-        Incidente: SS-URA-SW04 perdeu comunicaÃ§Ã£o via ping<br>
+        Incidente: SS-URA-SW04 perdeu comunicação via ping<br>
         Severidade: Disaster<br>
         Tempo de incidente: 4h 29m 0s
         <div class="wa-time">2026.05.12 04:13</div>
       </div>
       <div class="wa-msg high">
-        <div class="wa-tag high">ðŸŸ¡ HIGH</div>
+        <div class="wa-tag high">🟡 HIGH</div>
         <strong>hsdora188</strong><br>
-        Incidente: Database dbprod1 com 6 sessÃ£o(s) com objeto(s) em lock<br>
+        Incidente: Database dbprod1 com 6 sessão(s) com objeto(s) em lock<br>
         Severidade: High<br>
         Tempo de incidente: 55m 1s
         <div class="wa-time">2026.05.12 02:08</div>
       </div>
       <div class="wa-msg ok">
-        <div class="wa-tag ok">âœ… RECOVERY</div>
+        <div class="wa-tag ok">✅ RECOVERY</div>
         <strong>FW01HSD</strong><br>
         Incidente resolvido: FortiGate Unavailable by ICMP ping<br>
         Severidade: Resolvido
@@ -487,23 +487,23 @@
       </div>
     </div>
     <div style="flex:1; min-width:260px;">
-      <h3 style="font-size:1.3rem; margin-bottom:20px;">Funcionalidades do Bot de NotificaÃ§Ãµes</h3>
+      <h3 style="font-size:1.3rem; margin-bottom:20px;">Funcionalidades do Bot de Notificações</h3>
       <div style="display:flex; flex-direction:column; gap:14px;">
         <div class="card" style="padding:16px;">
-          <strong>ðŸ“… Alertas Agendados</strong>
-          <p style="margin-top:6px;">Configure horÃ¡rios especÃ­ficos para receber resumos do ambiente â€” manhÃ£, tarde e noite.</p>
+          <strong>📅 Alertas Agendados</strong>
+          <p style="margin-top:6px;">Configure horários específicos para receber resumos do ambiente — manhã, tarde e noite.</p>
         </div>
         <div class="card" style="padding:16px;">
-          <strong>ðŸ’¬ InteraÃ§Ã£o sob Demanda</strong>
+          <strong>💬 Interação sob Demanda</strong>
           <p style="margin-top:6px;">Consulte o status da infra a qualquer momento enviando uma mensagem ao bot.</p>
         </div>
         <div class="card" style="padding:16px;">
-          <strong>ðŸ‘¥ Grupos por Equipe</strong>
-          <p style="margin-top:6px;">NotificaÃ§Ãµes segmentadas por Ã¡rea: banco de dados, redes, servidores, aplicaÃ§Ãµes.</p>
+          <strong>👥 Grupos por Equipe</strong>
+          <p style="margin-top:6px;">Notificações segmentadas por área: banco de dados, redes, servidores, aplicações.</p>
         </div>
         <div class="card" style="padding:16px;">
-          <strong>ðŸ“ˆ RelatÃ³rios AutomÃ¡ticos</strong>
-          <p style="margin-top:6px;">RelatÃ³rios visuais gerados e enviados automaticamente ao time tÃ©cnico e gestores.</p>
+          <strong>📈 Relatórios Automáticos</strong>
+          <p style="margin-top:6px;">Relatórios visuais gerados e enviados automaticamente ao time técnico e gestores.</p>
         </div>
       </div>
     </div>
@@ -515,19 +515,19 @@
 <!-- DASHBOARD -->
 <section class="reveal" style="max-width:1100px; margin:0 auto; padding:80px 20px;">
   <div class="section-title">Dashboard em Tempo Real</div>
-  <div class="section-sub">Visibilidade completa da infraestrutura â€” disponibilidade, rede, sessÃµes e alertas ativos</div>
+  <div class="section-sub">Visibilidade completa da infraestrutura — disponibilidade, rede, sessões e alertas ativos</div>
   <div class="dash-grid">
 
     <!-- Disponibilidade -->
     <div class="dash-panel">
-      <div class="dash-title">ðŸ“¡ Disponibilidade Geral â€” Ãšltimas 6 horas</div>
+      <div class="dash-title">📡 Disponibilidade Geral — Últimas 6 horas</div>
       <div class="avail-big">
         <div class="avail-box green">
-          <div class="avail-label">MÃ©dia DisponÃ­vel %</div>
+          <div class="avail-label">Média Disponível %</div>
           <div class="avail-val">99.6</div>
         </div>
         <div class="avail-box purple">
-          <div class="avail-label">IndisponÃ­vel %</div>
+          <div class="avail-label">Indisponível %</div>
           <div class="avail-val">0.382</div>
         </div>
       </div>
@@ -541,11 +541,11 @@
 
     <!-- Status de Rede -->
     <div class="dash-panel">
-      <div class="dash-title">ðŸŒ Status de Links â€” Tempo Real</div>
-      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>ELO INTERNET</span><span class="net-val">âœ… Online</span></div>
-      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>WIKI INTERNET</span><span class="net-val">âœ… Online</span></div>
-      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>WAN SEC 1GR</span><span class="net-val">âœ… Online</span></div>
-      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>EMBRATEL</span><span class="net-val">âœ… Online</span></div>
+      <div class="dash-title">🌐 Status de Links — Tempo Real</div>
+      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>ELO INTERNET</span><span class="net-val">✅ Online</span></div>
+      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>WIKI INTERNET</span><span class="net-val">✅ Online</span></div>
+      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>WAN SEC 1GR</span><span class="net-val">✅ Online</span></div>
+      <div class="net-row"><span class="net-status"><span class="net-dot green"></span>EMBRATEL</span><span class="net-val">✅ Online</span></div>
       <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; text-align:center;">
         <div style="background:#0d1f12; border-radius:8px; padding:10px;">
           <div style="font-size:1.3rem; font-weight:900; color:var(--green);">36.6ms</div>
@@ -562,13 +562,13 @@
       </div>
     </div>
 
-    <!-- SessÃµes Ativas -->
+    <!-- Sessões Ativas -->
     <div class="dash-panel">
-      <div class="dash-title">ðŸ–¥ï¸ SessÃµes Ativas â€” Firewall</div>
+      <div class="dash-title">🖥️ Sessões Ativas — Firewall</div>
       <div style="display:flex; gap:20px; align-items:center;">
         <div>
           <div class="sess-num">129.079</div>
-          <div class="sess-label">SessÃµes ativas FortiGate</div>
+          <div class="sess-label">Sessões ativas FortiGate</div>
         </div>
         <div style="flex:1;">
           <div class="spark" id="spark1"></div>
@@ -581,7 +581,7 @@
         </div>
         <div style="background:#0f172a; border-radius:8px; padding:10px;">
           <div style="font-size:1.1rem; font-weight:900; color:var(--green);">10</div>
-          <div style="font-size:0.7rem; color:var(--muted);">UsuÃ¡rios VPN</div>
+          <div style="font-size:0.7rem; color:var(--muted);">Usuários VPN</div>
         </div>
         <div style="background:#0f172a; border-radius:8px; padding:10px;">
           <div style="font-size:1.1rem; font-weight:900; color:var(--yellow);">6</div>
@@ -592,18 +592,18 @@
 
     <!-- Feed de Alertas -->
     <div class="dash-panel">
-      <div class="dash-title">ðŸš¨ Alertas Recentes</div>
+      <div class="dash-title">🚨 Alertas Recentes</div>
       <div class="alert-row">
         <span class="sev-badge disaster">DISASTER</span>
-        <div><div class="alert-host">SS-URA-SW04</div><div class="alert-msg">Perdeu comunicaÃ§Ã£o via ping &mdash; 4h 29m</div></div>
+        <div><div class="alert-host">SS-URA-SW04</div><div class="alert-msg">Perdeu comunicação via ping &mdash; 4h 29m</div></div>
       </div>
       <div class="alert-row">
         <span class="sev-badge disaster">DISASTER</span>
-        <div><div class="alert-host">DC-URA-SW01</div><div class="alert-msg">Perdeu comunicaÃ§Ã£o via ping &mdash; 4h 29m</div></div>
+        <div><div class="alert-host">DC-URA-SW01</div><div class="alert-msg">Perdeu comunicação via ping &mdash; 4h 29m</div></div>
       </div>
       <div class="alert-row">
         <span class="sev-badge high">HIGH</span>
-        <div><div class="alert-host">hsdora188</div><div class="alert-msg">Database dbprod1 com sessÃµes em lock &mdash; 55m</div></div>
+        <div><div class="alert-host">hsdora188</div><div class="alert-msg">Database dbprod1 com sessões em lock &mdash; 55m</div></div>
       </div>
       <div class="alert-row">
         <span class="sev-badge high">HIGH</span>
@@ -622,69 +622,69 @@
 
 <!-- CLIENTES -->
 <section class="reveal" style="text-align:center;">
-  <div class="section-title">Empresas que Confiam no ServiÃ§o</div>
-  <div class="section-sub">Ambientes crÃ­ticos de saÃºde e diagnÃ³sticos monitorados 24/7</div>
+  <div class="section-title">Empresas que Confiam no Serviço</div>
+  <div class="section-sub">Ambientes críticos de saúde e diagnósticos monitorados 24/7</div>
   <div class="clients">
     <div class="client-card">
-      <img src="logo_hsd_original.png" alt="Hospital SÃ£o Domingos">
+      <img src="logo_hsd_original.png" alt="Hospital São Domingos">
     </div>
     <div class="client-card">
       <img src="logo_dasa.png" alt="DASA">
     </div>
     <div class="client-card">
-      <img src="logo_rede_americas.svg" alt="Rede AmÃ©ricas">
+      <img src="logo_rede_americas.svg" alt="Rede Américas">
     </div>
   </div>
-  <p style="color:var(--muted); margin-top:32px; font-size:0.9rem;">Infraestruturas hospitalares exigem disponibilidade mÃ¡xima.<br>Nosso NOC garante que qualquer falha seja detectada e comunicada em segundos.</p>
+  <p style="color:var(--muted); margin-top:32px; font-size:0.9rem;">Infraestruturas hospitalares exigem disponibilidade máxima.<br>Nosso NOC garante que qualquer falha seja detectada e comunicada em segundos.</p>
 </section>
 
 <hr class="divider">
 
 <!-- EXPERIENCIAS -->
 <section class="reveal">
-  <div class="section-title">ExperiÃªncias de Outras Empresas</div>
+  <div class="section-title">Experiências de Outras Empresas</div>
   <div class="section-sub">Resultados reais do bot de alertas e dashboards em ambientes de grande escala</div>
   <div class="exp-grid">
 
     <div class="exp-card">
-      <img src="img/exp1.png" alt="Bot DASA â€“ Health Check Oracle">
+      <img src="img/exp1.png" alt="Bot DASA – Health Check Oracle">
       <div class="exp-card-body">
         <span class="exp-tag dasa">DASA</span>
-        <h4>Bot de Health Check â€“ Oracle & PACS</h4>
+        <h4>Bot de Health Check – Oracle & PACS</h4>
         <p>Time solicita dashboard via bot e recebe instantaneamente o painel de alertas do ambiente Oracle, incluindo uso de cursores abertos e status de PACS.</p>
       </div>
     </div>
 
     <div class="exp-card">
-      <img src="img/exp2.png" alt="Bot DASA â€“ Painel Health Check">
+      <img src="img/exp2.png" alt="Bot DASA – Painel Health Check">
       <div class="exp-card-body">
         <span class="exp-tag dasa">DASA</span>
-        <h4>Painel Health Check â€” 30+ Ambientes</h4>
+        <h4>Painel Health Check — 30+ Ambientes</h4>
         <p>Menu interativo com mais de 30 ambientes monitorados: TASY, DataGuard, VMware, Oracle, PACS, AD, Links, Firewall e muito mais, tudo via bot.</p>
       </div>
     </div>
 
     <div class="exp-card">
-      <img src="img/exp3.png" alt="Bot Rede AmÃ©ricas â€“ Switch Dashboard">
+      <img src="img/exp3.png" alt="Bot Rede Américas – Switch Dashboard">
       <div class="exp-card-body">
-        <span class="exp-tag bot">Rede AmÃ©ricas</span>
+        <span class="exp-tag bot">Rede Américas</span>
         <h4>Dashboard de Switch em Tempo Real</h4>
-        <p>Dashboard gerado sob demanda mostrando Top 10 hosts com maior latÃªncia, alertas de conectividade e status de todos os switches da rede.</p>
+        <p>Dashboard gerado sob demanda mostrando Top 10 hosts com maior latência, alertas de conectividade e status de todos os switches da rede.</p>
       </div>
     </div>
 
     <div class="exp-card">
-      <img src="img/exp4_new.png" alt="Bot DASA â€“ MVH9J Dashboard">
+      <img src="img/exp4_new.png" alt="Bot DASA – MVH9J Dashboard">
       <div class="exp-card-body">
         <span class="exp-tag dasa">DASA</span>
         <h4>Dashboards Visuais por Unidade</h4>
-        <p>PainÃ©is coloridos com visÃ£o consolidada de todos os servidores e serviÃ§os crÃ­ticos por unidade hospitalar, enviados automaticamente pelo bot.</p>
+        <p>Painéis coloridos com visão consolidada de todos os servidores e serviços críticos por unidade hospitalar, enviados automaticamente pelo bot.</p>
       </div>
     </div>
 
   </div>
   <p style="color:var(--muted); margin-top:32px; font-size:0.9rem; text-align:center;">
-    ðŸ’¬ <em>"cara estÃ¡ muito TOP viu...ParabÃ©ns ðŸ‘ðŸ‘ðŸ‘"</em> â€” Igor Morales - Gerente de Ti - Rede AmÃ©ricas
+    💬 <em>"cara está muito TOP viu...Parabéns 👏👏👏"</em> — Igor Morales - Gerente de Ti - Rede Américas
   </p>
 </section>
 
@@ -692,32 +692,32 @@
 
 <!-- PLANOS -->
 <section class="reveal">
-  <div class="section-title">Planos de ServiÃ§o</div>
-  <div class="section-sub">Escolha o nÃ­vel de cobertura ideal para sua infraestrutura</div>
+  <div class="section-title">Planos de Serviço</div>
+  <div class="section-sub">Escolha o nível de cobertura ideal para sua infraestrutura</div>
   <div class="plans">
     <div class="plan">
       <div class="plan-name">Essencial</div>
-      <div style="color:var(--muted); font-size:0.85rem;">AtÃ© 50 hosts</div>
+      <div style="color:var(--muted); font-size:0.85rem;">Até 50 hosts</div>
       <div class="plan-price">Sob<span> consulta</span></div>
       <ul>
         <li>Monitoramento ativo de infraestrutura</li>
-        <li>Dashboard analÃ­tico bÃ¡sico</li>
-        <li>NotificaÃ§Ãµes instantÃ¢neas via bot</li>
-        <li>Suporte em horÃ¡rio comercial</li>
-        <li>RelatÃ³rio mensal</li>
+        <li>Dashboard analítico básico</li>
+        <li>Notificações instantâneas via bot</li>
+        <li>Suporte em horário comercial</li>
+        <li>Relatório mensal</li>
       </ul>
     </div>
     <div class="plan featured">
       <div class="plan-badge">Mais Popular</div>
       <div class="plan-name">Profissional</div>
-      <div style="color:var(--muted); font-size:0.85rem;">AtÃ© 300 hosts</div>
+      <div style="color:var(--muted); font-size:0.85rem;">Até 300 hosts</div>
       <div class="plan-price">Sob<span> consulta</span></div>
       <ul>
         <li>Plataforma de monitoramento completa</li>
-        <li>Dashboards analÃ­ticos personalizados</li>
-        <li>Bot de notificaÃ§Ãµes com grupos</li>
+        <li>Dashboards analíticos personalizados</li>
+        <li>Bot de notificações com grupos</li>
         <li>Alertas agendados e sob demanda</li>
-        <li>RelatÃ³rios automÃ¡ticos</li>
+        <li>Relatórios automáticos</li>
         <li>Monitoramento de BD e firewall</li>
         <li>Suporte 8x5</li>
       </ul>
@@ -730,9 +730,9 @@
         <li>Tudo do Profissional</li>
         <li>Suporte 24x7</li>
         <li>SLA garantido em contrato</li>
-        <li>IntegraÃ§Ãµes customizadas</li>
-        <li>ITSM / Chamados automÃ¡ticos</li>
-        <li>ReuniÃµes de review mensais</li>
+        <li>Integrações customizadas</li>
+        <li>ITSM / Chamados automáticos</li>
+        <li>Reuniões de review mensais</li>
         <li>Ambiente dedicado</li>
       </ul>
     </div>
@@ -743,8 +743,8 @@
 <div class="cta-section reveal">
   <h2>Pronto para ter visibilidade <span style="color:var(--accent);">total</span>?</h2>
   <p>Entre em contato e receba uma proposta personalizada para a sua infraestrutura.</p>
-  <a href="mailto:marcossilva03@hotmail.com" class="btn">ðŸ“§ Solicitar OrÃ§amento</a>
-  <a href="https://wa.me/5598999086074" class="btn-wa">ðŸ’¬ WhatsApp</a>
+  <a href="mailto:marcossilva03@hotmail.com" class="btn">📧 Solicitar Orçamento</a>
+  <a href="https://wa.me/5598999086074" class="btn-wa">💬 WhatsApp</a>
 </div>
 
 </div><!-- /page-noc -->
@@ -754,58 +754,58 @@
 
 <!-- SOC HERO -->
 <div class="soc-hero">
-  <div class="badge-soc">ðŸ›¡ï¸ SOC / MSS â€” MELO Telecom</div>
-  <h2>SeguranÃ§a <span>CibernÃ©tica</span><br>Gerenciada 24/7</h2>
-  <p>MSS (Managed Security Services) â€” proteÃ§Ã£o proativa combinando recursos humanos altamente qualificados, tecnologias avanÃ§adas e inteligÃªncia de ameaÃ§as em tempo real.</p>
+  <div class="badge-soc">🛡️ SOC / MSS — MELO Telecom</div>
+  <h2>Segurança <span>Cibernética</span><br>Gerenciada 24/7</h2>
+  <p>MSS (Managed Security Services) — proteção proativa combinando recursos humanos altamente qualificados, tecnologias avançadas e inteligência de ameaças em tempo real.</p>
   <div class="soc-stats">
-    <div class="stat"><div class="soc-stat-num">24/7</div><div class="stat-label">Monitoramento ContÃ­nuo</div></div>
-    <div class="stat"><div class="soc-stat-num">MTTDâ†“</div><div class="stat-label">DetecÃ§Ã£o Acelerada</div></div>
+    <div class="stat"><div class="soc-stat-num">24/7</div><div class="stat-label">Monitoramento Contínuo</div></div>
+    <div class="stat"><div class="soc-stat-num">MTTD↓</div><div class="stat-label">Detecção Acelerada</div></div>
     <div class="stat"><div class="soc-stat-num">MITRE</div><div class="stat-label">ATT&CK Framework</div></div>
-    <div class="stat"><div class="soc-stat-num">COBIT</div><div class="stat-label">GovernanÃ§a TI</div></div>
+    <div class="stat"><div class="soc-stat-num">COBIT</div><div class="stat-label">Governança TI</div></div>
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- O QUE Ã‰ MSS -->
+<!-- O QUE É MSS -->
 <section class="reveal">
-  <div class="section-title">O que Ã© MSS?</div>
-  <div class="section-sub">ServiÃ§os de SeguranÃ§a CibernÃ©tica gerenciados pela MELO Telecom</div>
+  <div class="section-title">O que é MSS?</div>
+  <div class="section-sub">Serviços de Segurança Cibernética gerenciados pela MELO Telecom</div>
   <div class="grid-3">
     <div class="card soc">
-      <div class="card-icon">ðŸ”­</div>
-      <h3>Monitoramento de SeguranÃ§a</h3>
-      <p>Monitoramento contÃ­nuo de sistemas, redes e aplicativos em busca de atividades suspeitas. AnÃ¡lise de logs, detecÃ§Ã£o de intrusÃµes e identificaÃ§Ã£o de eventos de seguranÃ§a em tempo real.</p>
+      <div class="card-icon">🔭</div>
+      <h3>Monitoramento de Segurança</h3>
+      <p>Monitoramento contínuo de sistemas, redes e aplicativos em busca de atividades suspeitas. Análise de logs, detecção de intrusões e identificação de eventos de segurança em tempo real.</p>
     </div>
     <div class="card soc">
-      <div class="card-icon">ðŸ§ </div>
-      <h3>AnÃ¡lise de AmeaÃ§as</h3>
-      <p>AvaliaÃ§Ã£o de ameaÃ§as emergentes com inteligÃªncia atualizada. CompreensÃ£o das tÃ¡ticas, tÃ©cnicas e procedimentos (TTPs) dos invasores para melhor detecÃ§Ã£o e resposta a incidentes.</p>
+      <div class="card-icon">🧠</div>
+      <h3>Análise de Ameaças</h3>
+      <p>Avaliação de ameaças emergentes com inteligência atualizada. Compreensão das táticas, técnicas e procedimentos (TTPs) dos invasores para melhor detecção e resposta a incidentes.</p>
     </div>
     <div class="card soc">
-      <div class="card-icon">ðŸ”</div>
-      <h3>GestÃ£o de Vulnerabilidades</h3>
-      <p>IdentificaÃ§Ã£o e gerenciamento de vulnerabilidades em sistemas e infraestrutura. Inclui testes de penetraÃ§Ã£o, avaliaÃ§Ã£o de seguranÃ§a, patch management e recomendaÃ§Ãµes de mitigaÃ§Ã£o.</p>
+      <div class="card-icon">🔍</div>
+      <h3>Gestão de Vulnerabilidades</h3>
+      <p>Identificação e gerenciamento de vulnerabilidades em sistemas e infraestrutura. Inclui testes de penetração, avaliação de segurança, patch management e recomendações de mitigação.</p>
     </div>
     <div class="card soc">
-      <div class="card-icon">ðŸš¨</div>
+      <div class="card-icon">🚨</div>
       <h3>Resposta a Incidentes</h3>
-      <p>Gerenciamento completo de incidentes: investigaÃ§Ã£o, contenÃ§Ã£o, recuperaÃ§Ã£o e anÃ¡lise forense. Desenvolvimento de planos e suporte especializado para minimizar o impacto de ataques.</p>
+      <p>Gerenciamento completo de incidentes: investigação, contenção, recuperação e análise forense. Desenvolvimento de planos e suporte especializado para minimizar o impacto de ataques.</p>
     </div>
     <div class="card soc">
-      <div class="card-icon">ðŸ”</div>
-      <h3>AutenticaÃ§Ã£o e Controle de Acesso</h3>
-      <p>ImplementaÃ§Ã£o de MFA, controle de acesso privilegiado (PAM) e gerenciamento de identidade para reforÃ§ar a seguranÃ§a das contas e proteger contra acessos nÃ£o autorizados.</p>
+      <div class="card-icon">🔐</div>
+      <h3>Autenticação e Controle de Acesso</h3>
+      <p>Implementação de MFA, controle de acesso privilegiado (PAM) e gerenciamento de identidade para reforçar a segurança das contas e proteger contra acessos não autorizados.</p>
     </div>
     <div class="card soc">
-      <div class="card-icon">ðŸ“‹</div>
-      <h3>GestÃ£o de Logs e Auditoria</h3>
-      <p>Coleta, armazenamento e anÃ¡lise de logs de seguranÃ§a para detectar violaÃ§Ãµes. GeraÃ§Ã£o de relatÃ³rios de conformidade para atender requisitos regulatÃ³rios como LGPD e ISO 27001.</p>
+      <div class="card-icon">📋</div>
+      <h3>Gestão de Logs e Auditoria</h3>
+      <p>Coleta, armazenamento e análise de logs de segurança para detectar violações. Geração de relatórios de conformidade para atender requisitos regulatórios como LGPD e ISO 27001.</p>
     </div>
     <div class="card soc">
-      <div class="card-icon">ðŸ’¡</div>
-      <h3>Consultoria em SeguranÃ§a</h3>
-      <p>OrientaÃ§Ã£o estratÃ©gica especializada em seguranÃ§a cibernÃ©tica. Desenvolvimento de polÃ­ticas, procedimentos e estratÃ©gias adaptadas Ã s necessidades e riscos de cada organizaÃ§Ã£o.</p>
+      <div class="card-icon">💡</div>
+      <h3>Consultoria em Segurança</h3>
+      <p>Orientação estratégica especializada em segurança cibernética. Desenvolvimento de políticas, procedimentos e estratégias adaptadas às necessidades e riscos de cada organização.</p>
     </div>
   </div>
 </section>
@@ -814,28 +814,28 @@
 
 <!-- FERRAMENTAS -->
 <section class="reveal">
-  <div class="section-title">Stack TecnolÃ³gico do CSOC</div>
-  <div class="section-sub">SoluÃ§Ãµes de ponta integradas para visibilidade abrangente, automaÃ§Ã£o eficiente e resposta Ã¡gil</div>
+  <div class="section-title">Stack Tecnológico do CSOC</div>
+  <div class="section-sub">Soluções de ponta integradas para visibilidade abrangente, automação eficiente e resposta ágil</div>
   <div class="grid-3">
 
     <!-- WAZUH -->
     <div class="tool-card" style="border-color:#6366f1; grid-column: span 2 / span 2;">
       <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start;">
         <div style="flex:1; min-width:260px;">
-          <div class="tool-logo">ðŸ¦…</div>
-          <h3>WAZUH â€” SIEM</h3>
-          <div class="tool-sub">Security Information & Event Management Â· Carro-chefe</div>
-          <p>O Wazuh Ã© o cÃ©rebro do nosso CSOC. Plataforma open-source de SIEM que centraliza o monitoramento de logs e eventos de seguranÃ§a de endpoints, redes e aplicaÃ§Ãµes. Detecta ameaÃ§as em tempo real com regras avanÃ§adas de correlaÃ§Ã£o e motores de anÃ¡lise comportamental.</p>
+          <div class="tool-logo">🦅</div>
+          <h3>WAZUH — SIEM</h3>
+          <div class="tool-sub">Security Information & Event Management · Carro-chefe</div>
+          <p>O Wazuh é o cérebro do nosso CSOC. Plataforma open-source de SIEM que centraliza o monitoramento de logs e eventos de segurança de endpoints, redes e aplicações. Detecta ameaças em tempo real com regras avançadas de correlação e motores de análise comportamental.</p>
           <ul class="tool-feat">
-            <li>Coleta e normalizaÃ§Ã£o de logs de mÃºltiplos dispositivos e sistemas</li>
-            <li>DetecÃ§Ã£o de ameaÃ§as com regras e correlaÃ§Ã£o em tempo real (IoCs)</li>
-            <li>AnÃ¡lise de vulnerabilidades em sistemas e aplicaÃ§Ãµes (SCA)</li>
-            <li>Monitoramento de Integridade de Arquivos â€” FIM (File Integrity Monitoring)</li>
-            <li>DetecÃ§Ã£o de rootkits e malwares em endpoints</li>
-            <li>Conformidade automÃ¡tica: PCI-DSS, HIPAA, NIST, LGPD, ISO 27001</li>
-            <li>MITRE ATT&CK mapping nativo â€” visibilidade de TTPs dos adversÃ¡rios</li>
-            <li>Dashboards de seguranÃ§a em tempo real com alertas classificados por severidade</li>
-            <li>IntegraÃ§Ã£o nativa com SOAR para automaÃ§Ã£o de resposta</li>
+            <li>Coleta e normalização de logs de múltiplos dispositivos e sistemas</li>
+            <li>Detecção de ameaças com regras e correlação em tempo real (IoCs)</li>
+            <li>Análise de vulnerabilidades em sistemas e aplicações (SCA)</li>
+            <li>Monitoramento de Integridade de Arquivos — FIM (File Integrity Monitoring)</li>
+            <li>Detecção de rootkits e malwares em endpoints</li>
+            <li>Conformidade automática: PCI-DSS, HIPAA, NIST, LGPD, ISO 27001</li>
+            <li>MITRE ATT&CK mapping nativo — visibilidade de TTPs dos adversários</li>
+            <li>Dashboards de segurança em tempo real com alertas classificados por severidade</li>
+            <li>Integração nativa com SOAR para automação de resposta</li>
           </ul>
         </div>
         <div style="min-width:220px; display:flex; flex-direction:column; gap:12px;">
@@ -849,7 +849,7 @@
           </div>
           <div style="background:#1a0a0a; border:1px solid var(--red); border-radius:12px; padding:16px; text-align:center;">
             <div style="font-size:2rem; font-weight:900; color:#f87171;">&lt;60s</div>
-            <div style="font-size:0.75rem; color:var(--muted);">Tempo mÃ©dio de detecÃ§Ã£o</div>
+            <div style="font-size:0.75rem; color:var(--muted);">Tempo médio de detecção</div>
           </div>
         </div>
       </div>
@@ -857,31 +857,31 @@
 
     <!-- SHUFFLE -->
     <div class="tool-card">
-      <div class="tool-logo">ðŸ”€</div>
-      <h3>SHUFFLE â€” SOAR</h3>
+      <div class="tool-logo">🔀</div>
+      <h3>SHUFFLE — SOAR</h3>
       <div class="tool-sub">Security Orchestration, Automation & Response</div>
-      <p>Plataforma SOAR que automatiza respostas a incidentes, libera a equipe para anÃ¡lises crÃ­ticas e reduz drasticamente MTTD e MTTR.</p>
+      <p>Plataforma SOAR que automatiza respostas a incidentes, libera a equipe para análises críticas e reduz drasticamente MTTD e MTTR.</p>
       <ul class="tool-feat">
-        <li>AutomaÃ§Ã£o de bloqueio de IPs e isolamento de endpoints</li>
-        <li>OrquestraÃ§Ã£o de workflows complexos de resposta</li>
-        <li>IntegraÃ§Ã£o com Wazuh, firewalls, EDR e ticketing</li>
-        <li>PadronizaÃ§Ã£o de processos de resposta a incidentes</li>
-        <li>ReduÃ§Ã£o significativa de MTTR (Mean Time to Respond)</li>
+        <li>Automação de bloqueio de IPs e isolamento de endpoints</li>
+        <li>Orquestração de workflows complexos de resposta</li>
+        <li>Integração com Wazuh, firewalls, EDR e ticketing</li>
+        <li>Padronização de processos de resposta a incidentes</li>
+        <li>Redução significativa de MTTR (Mean Time to Respond)</li>
       </ul>
     </div>
 
     <!-- THREAT INTELLIGENCE -->
     <div class="tool-card">
-      <div class="tool-logo">ðŸ•µï¸</div>
+      <div class="tool-logo">🕵️</div>
       <h3>Threat Intelligence</h3>
       <div class="tool-sub">Deep Web & Dark Web Monitoring</div>
-      <p>VigilÃ¢ncia contÃ­nua da Deep Web e Dark Web para identificar ameaÃ§as emergentes, vazamentos de dados e atividades maliciosas antes que impactem nossos clientes.</p>
+      <p>Vigilância contínua da Deep Web e Dark Web para identificar ameaças emergentes, vazamentos de dados e atividades maliciosas antes que impactem nossos clientes.</p>
       <ul class="tool-feat">
-        <li>DetecÃ§Ã£o antecipada de vazamento de credenciais</li>
-        <li>Monitoramento de fÃ³runs clandestinos e dark markets</li>
-        <li>AnÃ¡lise de vulnerabilidades zero-day em discussÃ£o</li>
-        <li>InteligÃªncia acionÃ¡vel e contextualizada</li>
-        <li>ProteÃ§Ã£o proativa antes da materializaÃ§Ã£o de ataques</li>
+        <li>Detecção antecipada de vazamento de credenciais</li>
+        <li>Monitoramento de fóruns clandestinos e dark markets</li>
+        <li>Análise de vulnerabilidades zero-day em discussão</li>
+        <li>Inteligência acionável e contextualizada</li>
+        <li>Proteção proativa antes da materialização de ataques</li>
       </ul>
     </div>
 
@@ -892,42 +892,42 @@
 
 <!-- FRAMEWORKS -->
 <section class="reveal">
-  <div class="section-title">Frameworks & GovernanÃ§a</div>
-  <div class="section-sub">Metodologias globais que sustentam a operaÃ§Ã£o do CSOC MELO Telecom</div>
+  <div class="section-title">Frameworks & Governança</div>
+  <div class="section-sub">Metodologias globais que sustentam a operação do CSOC MELO Telecom</div>
   <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;">
 
     <div class="fw-card">
-      <h3>ðŸŽ¯ MITRE ATT&CK</h3>
-      <p>Base de conhecimento global de tÃ¡ticas e tÃ©cnicas de adversÃ¡rios. Permite mapear e responder de forma eficaz a TTPs reais observadas em campo.</p>
+      <h3>🎯 MITRE ATT&CK</h3>
+      <p>Base de conhecimento global de táticas e técnicas de adversários. Permite mapear e responder de forma eficaz a TTPs reais observadas em campo.</p>
       <ul>
-        <li>Mapeamento de eventos com tÃ©cnicas conhecidas de adversÃ¡rios</li>
-        <li>Desenvolvimento de regras de detecÃ§Ã£o baseadas no framework</li>
-        <li>AnÃ¡lise de lacunas na cobertura de controles de seguranÃ§a</li>
-        <li>SimulaÃ§Ã£o de ataques (Red Team / Purple Team)</li>
-        <li>ComunicaÃ§Ã£o padronizada e compreensÃ­vel sobre ameaÃ§as</li>
+        <li>Mapeamento de eventos com técnicas conhecidas de adversários</li>
+        <li>Desenvolvimento de regras de detecção baseadas no framework</li>
+        <li>Análise de lacunas na cobertura de controles de segurança</li>
+        <li>Simulação de ataques (Red Team / Purple Team)</li>
+        <li>Comunicação padronizada e compreensível sobre ameaças</li>
       </ul>
     </div>
 
     <div class="fw-card" style="border-left-color:var(--soc2);">
-      <h3 style="color:var(--soc2);">ðŸ“ COBIT</h3>
-      <p>Framework de governanÃ§a e gestÃ£o de TI que alinha os objetivos de seguranÃ§a com os objetivos de negÃ³cio. Garante que a TI gere valor e gerencie riscos.</p>
+      <h3 style="color:var(--soc2);">📐 COBIT</h3>
+      <p>Framework de governança e gestão de TI que alinha os objetivos de segurança com os objetivos de negócio. Garante que a TI gere valor e gerencie riscos.</p>
       <ul>
-        <li>GovernanÃ§a: responsabilidades e supervisÃ£o de seguranÃ§a</li>
-        <li>GestÃ£o de riscos cibernÃ©ticos integrada ao corporativo</li>
-        <li>OtimizaÃ§Ã£o de investimentos em seguranÃ§a</li>
-        <li>KPIs e mÃ©tricas de desempenho do CSOC</li>
-        <li>Conformidade e auditoria regulatÃ³ria</li>
+        <li>Governança: responsabilidades e supervisão de segurança</li>
+        <li>Gestão de riscos cibernéticos integrada ao corporativo</li>
+        <li>Otimização de investimentos em segurança</li>
+        <li>KPIs e métricas de desempenho do CSOC</li>
+        <li>Conformidade e auditoria regulatória</li>
       </ul>
     </div>
 
     <div class="fw-card" style="border-left-color:var(--accent2);">
-      <h3 style="color:var(--accent2);">ðŸ”’ ISO 27001 / NIST</h3>
-      <p>Operamos alinhados Ã s melhores prÃ¡ticas internacionais de seguranÃ§a da informaÃ§Ã£o, garantindo conformidade e maturidade operacional.</p>
+      <h3 style="color:var(--accent2);">🔒 ISO 27001 / NIST</h3>
+      <p>Operamos alinhados às melhores práticas internacionais de segurança da informação, garantindo conformidade e maturidade operacional.</p>
       <ul>
-        <li>PolÃ­ticas e controles alinhados Ã  ISO 27001</li>
-        <li>Ciclo PDCA para melhoria contÃ­nua</li>
+        <li>Políticas e controles alinhados à ISO 27001</li>
+        <li>Ciclo PDCA para melhoria contínua</li>
         <li>Framework NIST CSF: Identify, Protect, Detect, Respond, Recover</li>
-        <li>RelatÃ³rios de conformidade automatizados</li>
+        <li>Relatórios de conformidade automatizados</li>
         <li>Suporte a LGPD, PCI-DSS e HIPAA</li>
       </ul>
     </div>
@@ -939,17 +939,17 @@
 
 <!-- SOC CTA -->
 <div class="cta-section reveal" style="background: radial-gradient(ellipse 70% 60% at 50% 100%, #2d1b69 0%, #0a0d14 70%);">
-  <h2>Proteja sua organizaÃ§Ã£o com <span style="color:var(--soc);">inteligÃªncia</span>.</h2>
-  <p>Fale com nossos especialistas e solicite uma avaliaÃ§Ã£o gratuita do seu ambiente de seguranÃ§a.</p>
-  <a href="mailto:marcossilva03@hotmail.com" class="btn" style="background:linear-gradient(90deg,var(--soc),var(--soc2));">ðŸ“§ Solicitar AvaliaÃ§Ã£o</a>
-  <a href="https://wa.me/5598999086074" class="btn-wa" style="margin-left:16px;">ðŸ’¬ WhatsApp</a>
+  <h2>Proteja sua organização com <span style="color:var(--soc);">inteligência</span>.</h2>
+  <p>Fale com nossos especialistas e solicite uma avaliação gratuita do seu ambiente de segurança.</p>
+  <a href="mailto:marcossilva03@hotmail.com" class="btn" style="background:linear-gradient(90deg,var(--soc),var(--soc2));">📧 Solicitar Avaliação</a>
+  <a href="https://wa.me/5598999086074" class="btn-wa" style="margin-left:16px;">💬 WhatsApp</a>
 </div>
 
 </div><!-- /page-soc -->
 
 <footer>
-  <p>NOC & SOC as a Service Â· Monitoramento Ativo 24/7 Â· SeguranÃ§a CibernÃ©tica Gerenciada Â· MELO Telecom</p>
-  <p style="margin-top:8px;">Â© 2026 Â· Todos os direitos reservados</p>
+  <p>NOC & SOC as a Service · Monitoramento Ativo 24/7 · Segurança Cibernética Gerenciada · MELO Telecom</p>
+  <p style="margin-top:8px;">© 2026 · Todos os direitos reservados</p>
 </footer>
 
 <script>
